@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="list-group">
+            <a href="#" class="list-group-item active">
+                <i class="icon material-icons">expand_more</i>
+                Posts
+            </a>
+            {% for post in site.pages %}
+            {% if post.category == 'Posts' %}
+            {% if page.url == post.url %}
+            <a class="list-group-item list-group-item-level-2 active" href="#">{{ post.title }}</a>
+            {% else %}
+            <a class="list-group-item list-group-item-level-2" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="col-md-7 col-md-offset-1">
+
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+
+                <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+
+                <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+
+                {{ content }}
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>

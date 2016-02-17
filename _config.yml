@@ -1,0 +1,17 @@
+title: i / know / me
+email: andrew@band-x.media
+description: >
+  The ramblings of a platoform engineer in Newcastle
+baseurl: ""
+url: "http://www.iknow.me"
+twitter_username: andrew_waters
+github_username:  andrew-waters
+markdown: kramdown
+
+github: [metadata]
+kramdown:
+  input: GFM
+hard_wrap: false
+gems:
+  - jekyll-coffeescript
+  - jekyll-paginate
