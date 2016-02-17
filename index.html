@@ -4,11 +4,56 @@ layout: default
 
 <div class="row">
 
-    <div class="col-md-3 col-md-offset-1 col-xs-8 col-xs-offset-2">
+    <div class="col-md-4">
 
-        <img src="assets/images/profile.jpg" class="img-circle img-responsive img-thumbnail">
+        <div class="row">
 
-        <div class="breather-lg"></div>
+            <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+
+                <img src="assets/images/profile.jpg" class="img-circle img-responsive img-thumbnail">
+
+            </div>
+
+            <div class="breather-lg"></div>
+
+            <div class="col-md-11 col-md-offset-1">
+
+            <h3>Recent Posts</h3>
+
+            <div class="list elevated-1">
+
+                {% assign posts = (site.pages | sort:"date" | reverse ) %}
+                {% for post in posts limit:5 %}
+                {% if post.category == 'Posts' %}
+
+                <div class="list-item">
+
+                    <div class="list-item-content">
+
+                        <div class="list-item-primary-content">
+
+                            <p class="line-2">
+                                <a href="{{ post.url | prepend: site.baseurl }}">
+                                    {{ post.title }}
+                                </a>
+                            </p>
+
+                            <p class="line-3">{{ post.date | date_to_string}}</p>
+
+                        </div>
+    
+                    </div>
+
+                </div>
+
+                {% endif %}
+                {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -59,22 +104,6 @@ layout: default
         </div>
 
         <hr />
-
-    </div>
-
-</div>
-
-<div class="row">
-
-    <div class="breather-lg"></div>
-
-    <div class="empty-state" data-empty-bg="assets/images/empty-state.jpg">
-
-        <h3>WIP</h3>
-
-        <i class="icon icon-xxl material-icons">fingerprint</i>
-
-        <p>I'm reserving this space to write about things. I have written things, many things on github, but I've been pretty bad at sharing my experiences outside of that domain. I do want to change that though. I read a lot of other peoples thoughts and would like to feed back. When I'm not being sarcastic on Facebook.</p>
 
     </div>
 

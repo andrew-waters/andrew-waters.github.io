@@ -11,7 +11,9 @@ layout: default
                 <i class="icon material-icons">expand_more</i>
                 Posts
             </a>
-            {% for post in site.pages %}
+
+            {% assign posts = (site.pages | sort:"date" | reverse ) %}
+            {% for post in posts %}
             {% if post.category == 'Posts' %}
             {% if page.url == post.url %}
             <a class="list-group-item list-group-item-level-2 active" href="#">{{ post.title }}</a>
